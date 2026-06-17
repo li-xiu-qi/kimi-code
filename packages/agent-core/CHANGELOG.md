@@ -1,5 +1,16 @@
 # @moonshot-ai/agent-core
 
+## 0.13.2
+
+### Patch Changes
+
+- [#836](https://github.com/MoonshotAI/kimi-code/pull/836) [`65423c6`](https://github.com/MoonshotAI/kimi-code/commit/65423c673b675d43f379189e832f5e7d355f8920) - Recover from think-only/empty compaction summaries by shrinking the compacted prefix before retrying. Previously an `APIEmptyResponseError` (a response with only reasoning content, no summary text) was retried with an identical request, so the model reproduced the same empty result until the retry budget was exhausted and the run aborted. It is now handled like a truncated summary: each retry reduces the compacted prefix to free output headroom.
+
+- [#822](https://github.com/MoonshotAI/kimi-code/pull/822) [`66b4d65`](https://github.com/MoonshotAI/kimi-code/commit/66b4d658a055e19359056fe0f2d52202c4a93c25) - Release process stdio resources after managed commands finish or are stopped.
+
+- Updated dependencies [[`66b4d65`](https://github.com/MoonshotAI/kimi-code/commit/66b4d658a055e19359056fe0f2d52202c4a93c25)]:
+  - @moonshot-ai/kaos@0.1.7
+
 ## 0.13.1
 
 ### Patch Changes
